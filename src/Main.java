@@ -16,7 +16,12 @@ public class Main {
 
         sdu.add(sduFaculty);
 
-        SDUFaculty f = sdu.getFaculty(1);
+        SDUFaculty sduFaculty2 = new SDUFaculty();
+        sduFaculty2.setName("EDU");
+        sduFaculty2.setSpecialities(4);
+        sdu.add(sduFaculty2);
+
+        SDUFaculty f = sdu.getFaculty(3);
         System.out.println(f.getId() + " "
                 + f.getName() + " "
                 + f.getSpecialities());
@@ -26,7 +31,7 @@ public class Main {
             System.out.println(all);
         }
 
-        SDUFaculty upd = sdu.getFaculty(1);
+        SDUFaculty upd = sdu.getFaculty(3);
         upd.setSpecialities(4);
         sdu.update(upd);
 
