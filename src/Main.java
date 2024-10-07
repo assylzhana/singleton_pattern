@@ -1,4 +1,7 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 
@@ -7,6 +10,28 @@ public class Main {
     public static void main(String[] args)
             throws SQLException
     {
+        String url = "jdbc:postgresql://localhost:5432/postgres"; // Update with your DB info
+        String user = "postgres";
+        String password = "postgres";
+
+        // SQL query to create the table
+        String createTableSQL = "CREATE TABLE IF NOT EXISTS sdu_faculty (" +
+
+                "name VARCHAR(255) NOT NULL, " +
+                "specialities INT NOT NULL" +
+                ");";
+
+        // Try-with-resources to automatically close the connection
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             Statement statement = connection.createStatement()) {
+
+            // Execute the SQL query to create the table
+            statement.execute(createTableSQL);
+            System.out.println("Table 'sdu_faculty' created successfully!");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         SDUFaculty sduFaculty = new SDUFaculty();
         sduFaculty.setName("Engineering");

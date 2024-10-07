@@ -24,9 +24,9 @@ public class DatabaseConnection {
 
     public static Connection getConnection() {
         if (connection == null) {
-            String url = "jdbc:postgresql://localhost:5432/sdu_faculty";
+            String url = "jdbc:postgresql://localhost:5432/postgres";
             String user = "postgres";
-            String pass = "asylka225";
+            String pass = "postgres";
             try {
                 Class.forName("org.postgresql.Driver");
                 connection = DriverManager.getConnection(url, user, pass);
